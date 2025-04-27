@@ -13,8 +13,8 @@ import {
   type FieldValues,
 } from "react-hook-form"
 
-import { cn } from "@/lib/utils"
 import { Label } from "@/components/ui/label"
+import clsx from "clsx";
 
 const Form = FormProvider
 
@@ -80,11 +80,11 @@ function FormItem({ className, ...props }: React.ComponentProps<"div">) {
     <FormItemContext.Provider value={{ id }}>
       <div
         data-slot="form-item"
-        className={cn("grid gap-2", className)}
+        className={clsx("grid gap-2", className)}
         {...props}
       />
     </FormItemContext.Provider>
-  )
+  );
 }
 
 function FormLabel({
@@ -97,11 +97,11 @@ function FormLabel({
     <Label
       data-slot="form-label"
       data-error={!!error}
-      className={cn("data-[error=true]:text-destructive", className)}
+      className={clsx("data-[error=true]:text-destructive", className)}
       htmlFor={formItemId}
       {...props}
     />
-  )
+  );
 }
 
 function FormControl({ ...props }: React.ComponentProps<typeof Slot>) {
@@ -129,10 +129,10 @@ function FormDescription({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-description"
       id={formDescriptionId}
-      className={cn("text-muted-foreground text-sm", className)}
+      className={clsx("text-muted-foreground text-sm", className)}
       {...props}
     />
-  )
+  );
 }
 
 function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
@@ -147,12 +147,12 @@ function FormMessage({ className, ...props }: React.ComponentProps<"p">) {
     <p
       data-slot="form-message"
       id={formMessageId}
-      className={cn("text-destructive text-sm", className)}
+      className={clsx("text-destructive text-sm", className)}
       {...props}
     >
       {body}
     </p>
-  )
+  );
 }
 
 export {
